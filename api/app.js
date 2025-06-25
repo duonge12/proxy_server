@@ -20,14 +20,14 @@ app.get("/a", (req, res) => {
 	if (accepted) {
 		res.send("Request a");
 	} else {
-		res.status(403).send("Forbidden");
+		res.send("Forbidden");
 	}
 });
 app.get("/b", (req, res) => {
 	if (accepted) {
 		res.send("Request b");
 	} else {
-		res.status(403).send("Forbidden");
+		res.send("Forbidden");
 	}
 });
 
