@@ -14,7 +14,7 @@ app.get("/", (req, res) => {
 	if (req.isAcceptedOrigin) {
 		return res.send("Request default");
 	} else {
-		return res.status(403).send("Forbidden default");
+		return res.send("Forbidden default");
 	}
 });
 
@@ -22,7 +22,7 @@ app.get("/a", (req, res) => {
 	if (req.isAcceptedOrigin) {
 		return res.send("Request a");
 	} else {
-		return res.status(403).send("Forbidden a");
+		return res.send("Forbidden a");
 	}
 });
 
@@ -30,7 +30,7 @@ app.get("/b", (req, res) => {
 	if (req.isAcceptedOrigin) {
 		return res.send("Request b");
 	} else {
-		return res.status(403).send("Forbidden b");
+		return res.send("Forbidden b");
 	}
 });
 
