@@ -9,12 +9,16 @@ app.use((req, res, next) => {
 	const origin = req.headers.origin;
 
 	if (origin && !acceptedOrigins.includes(origin)) {
+		res.setHeader("Access-Control-Allow-Origin", "null");
+		res.setHeader("Access-Control-Allow-Headers", "*");
+		res.setHeader("Content-Type", "text/plain");
 		res.status(403).send("Origin not allowed");
 		return;
 	}
 
 	next();
 });
+
 app.get("/a", (req, res) => {
 	res.send("Request a");
 });
