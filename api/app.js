@@ -14,6 +14,7 @@ app.use((req, res, next) => {
 	if (origin && acceptedOrigins.includes(origin)) {
 		accepted = true;
 	}
+	next();
 });
 app.get("/", (req, res) => {
 	if (accepted) {
