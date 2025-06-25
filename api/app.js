@@ -17,7 +17,11 @@ app.use((req, res, next) => {
 	next();
 });
 app.get("/", (req, res) => {
-	res.send(accepted);
+	res.send(
+		accepted === undefined || accepted === null
+			? "No problem here"
+			: "not undefined or null"
+	);
 	if (accepted) {
 		res.send("Request default");
 	} else {
@@ -25,7 +29,11 @@ app.get("/", (req, res) => {
 	}
 });
 app.get("/a", (req, res) => {
-	res.send(accepted);
+	res.send(
+		accepted === undefined || accepted === null
+			? "No problem here"
+			: "not undefined or null"
+	);
 	if (accepted) {
 		res.send("Request a");
 	} else {
@@ -33,7 +41,11 @@ app.get("/a", (req, res) => {
 	}
 });
 app.get("/b", (req, res) => {
-	res.send(accepted);
+	res.send(
+		accepted === undefined || accepted === null
+			? "No problem here"
+			: "not undefined or null"
+	);
 	if (accepted) {
 		res.send("Request b");
 	} else {
