@@ -4,11 +4,7 @@ const app = express();
 
 // Routes
 app.get("/", (req, res) => {
-	if (req.headers.origin === "http://127.0.0.1:5500") {
-		return res.send("Request default");
-	} else {
-		return res.send("Forbidden default");
-	}
+	res.send("Request default");
 });
 
 app.get("/a", (req, res) => {
