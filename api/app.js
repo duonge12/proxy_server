@@ -15,19 +15,25 @@ app.use((req, res, next) => {
 		accepted = true;
 	}
 });
-
+app.get("/", (req, res) => {
+	if (accepted) {
+		res.send("Request default");
+	} else {
+		res.send("Forbidden default");
+	}
+});
 app.get("/a", (req, res) => {
 	if (accepted) {
 		res.send("Request a");
 	} else {
-		res.send("Forbidden");
+		res.send("Forbidden a");
 	}
 });
 app.get("/b", (req, res) => {
 	if (accepted) {
 		res.send("Request b");
 	} else {
-		res.send("Forbidden");
+		res.send("Forbidden b");
 	}
 });
 
