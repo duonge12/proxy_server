@@ -3,7 +3,10 @@ const path = require("path");
 const serverless = require("serverless-http");
 const app = express();
 
-const acceptedOrigins = ["http://abc.com"];
+const acceptedOrigins = [
+	"http://abc.com",
+	"https://proxy-server-gamma-five.vercel.app",
+];
 let accepted = false;
 app.use((req, res, next) => {
 	const origin = req.headers.origin;
