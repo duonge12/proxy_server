@@ -9,7 +9,8 @@ app.use((req, res, next) => {
 	const origin = req.headers.origin;
 
 	if (origin && !acceptedOrigins.includes(origin)) {
-		return res.send("Origin not allowed");
+		res.send("Origin not allowed");
+		return;
 	}
 
 	next();
