@@ -1,5 +1,6 @@
 const express = require("express");
 const path = require("path");
+const serverless = require("serverless-http");
 const app = express();
 
 const acceptedOrigins = ["http://abc.com"];
@@ -17,6 +18,4 @@ app.get("/", (req, res) => {
 	res.send("Origin accepted");
 });
 
-module.exports = (req, res) => {
-	app(req, res); // this wraps your express app manually
-};
+module.exports = serverless(app);
