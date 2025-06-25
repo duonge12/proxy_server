@@ -1,5 +1,4 @@
 const express = require("express");
-const path = require("path");
 const serverless = require("serverless-http");
 const app = express();
 
@@ -7,49 +6,36 @@ const acceptedOrigins = [
 	"http://abc.com",
 	"https://proxy-server-gamma-five.vercel.app",
 ];
-let accepted = false;
+
+// Middleware: attach per-request acceptance flag
 app.use((req, res, next) => {
 	const origin = req.headers.origin;
-
-	if (origin && acceptedOrigins.includes(origin)) {
-		accepted = true;
-	}
+	req.isAcceptedOrigin = origin && acceptedOrigins.includes(origin);
 	next();
 });
+
+// Routes
 app.get("/", (req, res) => {
-	res.send(
-		accepted === undefined || accepted === null
-			? "No problem here"
-			: "not undefined or null"
-	);
-	if (accepted) {
-		res.send("Request default");
+	if (req.isAcceptedOrigin) {
+		return res.send("Request default");
 	} else {
-		res.send("Forbidden default");
+		return res.status(403).send("Forbidden default");
 	}
 });
+
 app.get("/a", (req, res) => {
-	res.send(
-		accepted === undefined || accepted === null
-			? "No problem here"
-			: "not undefined or null"
-	);
-	if (accepted) {
-		res.send("Request a");
+	if (req.isAcceptedOrigin) {
+		return res.send("Request a");
 	} else {
-		res.send("Forbidden a");
+		return res.status(403).send("Forbidden a");
 	}
 });
+
 app.get("/b", (req, res) => {
-	res.send(
-		accepted === undefined || accepted === null
-			? "No problem here"
-			: "not undefined or null"
-	);
-	if (accepted) {
-		res.send("Request b");
+	if (req.isAcceptedOrigin) {
+		return res.send("Request b");
 	} else {
-		res.send("Forbidden b");
+		return res.status(403).send("Forbidden b");
 	}
 });
 
