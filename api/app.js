@@ -17,6 +17,7 @@ app.use((req, res, next) => {
 	next();
 });
 app.get("/", (req, res) => {
+	res.send(accepted);
 	if (accepted) {
 		res.send("Request default");
 	} else {
@@ -24,6 +25,7 @@ app.get("/", (req, res) => {
 	}
 });
 app.get("/a", (req, res) => {
+	res.send(accepted);
 	if (accepted) {
 		res.send("Request a");
 	} else {
@@ -31,6 +33,7 @@ app.get("/a", (req, res) => {
 	}
 });
 app.get("/b", (req, res) => {
+	res.send(accepted);
 	if (accepted) {
 		res.send("Request b");
 	} else {
