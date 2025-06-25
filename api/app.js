@@ -5,7 +5,7 @@ const app = express();
 // Middleware: attach per-request acceptance flag
 app.use((req, res, next) => {
 	const origin = req.headers.origin;
-	if (origin && acceptedOrigins.includes(origin)) {
+	if (origin && [""].includes(origin)) {
 		req.isAcceptedOrigin = true;
 		res.setHeader("Access-Control-Allow-Origin", origin);
 		res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
