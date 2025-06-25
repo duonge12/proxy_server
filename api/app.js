@@ -9,13 +9,16 @@ app.use((req, res, next) => {
 	const origin = req.headers.origin;
 
 	if (origin && !acceptedOrigins.includes(origin)) {
-		return res.status(403).json({ error: "Forbidden origin" });
+		return res.send("Origin not allowed");
 	}
 
 	next();
 });
-app.get("/", (req, res) => {
-	res.send("Origin accepted");
+app.get("/a", (req, res) => {
+	res.send("Request a");
+});
+app.get("/b", (req, res) => {
+	res.send("Request b");
 });
 
 module.exports = serverless(app);
