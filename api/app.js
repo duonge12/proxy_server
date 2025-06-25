@@ -2,15 +2,10 @@ const express = require("express");
 const serverless = require("serverless-http");
 const app = express();
 
-const acceptedOrigins = [
-	"http://abc.com",
-	"https://proxy-server-gamma-five.vercel.app",
-];
-
 // Middleware: attach per-request acceptance flag
 app.use((req, res, next) => {
 	const origin = req.headers.origin;
-	req.isAcceptedOrigin = origin && acceptedOrigins.includes(origin);
+	req.isAcceptedOrigin = origin && [""].includes(origin);
 	next();
 });
 
